@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "To Yandex Translate",
+  "version": "1.0",
+  "description": "You can select text and send it to Yandex Translate.",
+  "icons": {
+    "48": "assets/icons/icon-180.png"
+  },
+  "background": {
+    "scripts": ["src/context_menu.js"]
+  },
+  "permissions": ["activeTab", "contextMenus"]
+}
