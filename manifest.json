@@ -12,5 +12,9 @@
   "background": {
     "scripts": ["src/context_menu.js"]
   },
-  "permissions": ["contextMenus"]
+  "permissions": ["contextMenus"],
+  "developer": {
+    "name": "Stanislav Romanov",
+    "url": "https://github.com/kaermorchen"
+  }
 }
