@@ -4,10 +4,7 @@
   "version": "1.0",
   "description": "You can select text and send it to Yandex Translate.",
   "icons": {
-    "16": "assets/icons/icon-180.png",
-    "48": "assets/icons/icon-180.png",
-    "128": "assets/icons/icon-180.png",
-    "180": "assets/icons/icon-180.png"
+    "192": "assets/icons/icon-192.png"
   },
   "background": {
     "scripts": ["src/context_menu.js"]
