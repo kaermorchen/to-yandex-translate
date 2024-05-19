@@ -1,3 +1,7 @@
+<div style="text-align: center; margin-bottom: 20px;">
+    <img src="./assets/icons/icon-96.png" title="Yandex Translation" alt="Yandex Translation">
+</div>
+
 # Yandex Translation
 
 Yandex Translation is free and reliable tool provides accurate translations for over 90 languages. Simply select the text you need, use context menu, and Yandex Translate will provide you with the correct translation in seconds.
