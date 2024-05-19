@@ -14,3 +14,4 @@ Yandex Translation is free and reliable tool provides accurate translations for 
 - support `Manifest V3`
 - support hot keys
 - support `source_lang` and `target_lang`
+- support new tab instead of new window
