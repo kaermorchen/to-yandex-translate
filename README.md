@@ -1,6 +1,6 @@
 # Yandex Translation
 
-This firefox extension allows you to select text and send it Yandex Translation.
+Yandex Translation is free and reliable tool provides accurate translations for over 90 languages. Simply select the text you need, use context menu, and Yandex Translate will provide you with the correct translation in seconds.
 
 [Yandex Translation](https://addons.mozilla.org/en-US/firefox/addon/to-yandex-translate/) in Mozilla Addons
 
