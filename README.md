@@ -1,6 +1,6 @@
-<div style="text-align: center; margin-bottom: 20px;">
+<p align="center">
     <img src="./assets/icons/icon-96.png" title="Yandex Translation" alt="Yandex Translation">
-</div>
+</p>
 
 # Yandex Translation
 
