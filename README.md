@@ -1,8 +1,8 @@
-# To Yandex Translate
+# Yandex Translation
 
-This firefox extension allows you to select text and send it to Yandex Translate.
+This firefox extension allows you to select text and send it Yandex Translation.
 
-[To Yandex Translate](https://addons.mozilla.org/en-US/firefox/addon/to-yandex-translate/) in Mozilla Addons
+[Yandex Translation](https://addons.mozilla.org/en-US/firefox/addon/to-yandex-translate/) in Mozilla Addons
 
 ## TODO:
 
