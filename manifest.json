@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "To Yandex Translate",
-  "version": "1.0",
+  "version": "1.1",
   "description": "You can select text and send it to Yandex Translate.",
   "icons": {
     "192": "assets/icons/icon-192.png"
@@ -9,9 +9,17 @@
   "background": {
     "scripts": ["src/context_menu.js"]
   },
-  "permissions": ["contextMenus"],
+  "permissions": ["contextMenus", "storage"],
+  "options_ui": {
+    "page": "src/options.html"
+  },
   "developer": {
     "name": "Stanislav Romanov",
     "url": "https://github.com/kaermorchen"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "to-yandex-translate@kaermorchen.github.com"
+    }
   }
 }

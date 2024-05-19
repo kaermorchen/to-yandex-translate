@@ -1,0 +1,12 @@
+body {
+  padding: 1rem;
+}
+
+.form-input {
+  margin-bottom: 1rem;
+}
+
+.form-input label {
+  display: inline-block;
+  width: 90px;
+}
