@@ -1,8 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "Yandex Translation",
+  "name": "__MSG_extensionName__",
   "version": "1.1",
-  "description": "Yandex Translation is free and reliable tool provides accurate translations for over 90 languages. Simply select the text you need, use context menu, and Yandex Translate will provide you with the correct translation in seconds.",
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
   "icons": {
     "48": "assets/icons/icon-48.png",
     "96": "assets/icons/icon-96.png",

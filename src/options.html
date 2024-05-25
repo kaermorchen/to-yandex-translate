@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="options.css" />
@@ -8,18 +8,23 @@
   <body>
     <form>
       <div class="form-input">
-        <label for="window_width">Window width:</label>
+        <label for="window_width" data-locale="windowWidth"
+          >Window width:</label
+        >
         <input type="number" id="window_width" name="window_width" min="1" />
       </div>
 
       <div class="form-input">
-        <label for="window_height">Window height:</label>
+        <label for="window_height" data-locale="windowHeight"
+          >Window height:</label
+        >
         <input type="number" id="window_height" name="window_height" min="1" />
       </div>
 
-      <button type="submit">Save</button>
+      <button type="submit" data-locale="save">Save</button>
     </form>
 
+    <script src="localize_html.js"></script>
     <script src="options.js"></script>
   </body>
 </html>
