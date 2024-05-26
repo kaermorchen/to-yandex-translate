@@ -6,6 +6,10 @@ body {
   margin-bottom: 1rem;
 }
 
+fieldset {
+  margin-bottom: 1rem;
+}
+
 .form-input label {
   display: inline-block;
   width: 90px;

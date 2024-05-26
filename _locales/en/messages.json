@@ -7,6 +7,18 @@
     "message": "Yandex Translation is free and reliable tool provides accurate translations for over 90 languages. Simply select the text you need, use context menu, and Yandex Translate will provide you with the correct translation in seconds."
   },
 
+  "openIn": {
+    "message": "Open translation in"
+  },
+
+  "newWindow": {
+    "message": "a new window"
+  },
+
+  "newTab": {
+    "message": "a new tab"
+  },
+
   "windowWidth": {
     "message": "Window width"
   },
