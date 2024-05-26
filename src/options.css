@@ -10,6 +10,14 @@ fieldset {
   margin-bottom: 1rem;
 }
 
+fieldset .form-input {
+  margin-bottom: 0.5rem;
+}
+
+fieldset .form-input:last-child {
+  margin-bottom: 0;
+}
+
 .form-input label {
   display: inline-block;
   width: 90px;
