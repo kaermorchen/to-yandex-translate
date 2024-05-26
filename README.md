@@ -11,7 +11,7 @@ Yandex Translation is free and reliable tool provides accurate translations for 
 ## TODO:
 
 - [x] i18n
-- [ ] support new tab instead of new window
+- [x] support new tab instead of new window
 - [ ] support `Manifest V3`
 - [ ] support hot keys
 - [ ] support `source_lang` and `target_lang`
