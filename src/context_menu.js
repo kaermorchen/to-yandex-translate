@@ -1,8 +1,4 @@
-browser.contextMenus.create({
-  title: "Yandex Translate: %s",
-  contexts: ["selection"],
-  onclick: lookUpYandexTranslate,
-});
+const contextMenuId = "yandex-translate";
 
 const domainLocales = new Map([
   ["en", "com"],
@@ -10,11 +6,11 @@ const domainLocales = new Map([
 ]);
 
 async function lookUpYandexTranslate(info) {
-  if (!info) {
+  if (!info || info.menuItemId !== contextMenuId) {
     return;
   }
 
-  const gettingAcceptLanguages = await browser.i18n.getAcceptLanguages();
+  const gettingAcceptLanguages = await chrome.i18n.getAcceptLanguages();
 
   const supportedLanguage =
     gettingAcceptLanguages.find((item) => domainLocales.has(item)) || "en";
@@ -22,14 +18,14 @@ async function lookUpYandexTranslate(info) {
   const domainLocale = domainLocales.get(supportedLanguage);
   const url = `https://translate.yandex.${domainLocale}/?text=${info.selectionText}`;
 
-  const settings = await browser.storage.sync.get({
+  const settings = await chrome.storage.sync.get({
     window_height: 650,
     window_width: 900,
     target: "window",
   });
 
   if (settings.target === "tab") {
-    browser.tabs.create({
+    chrome.tabs.create({
       url: url,
     });
   } else {
@@ -38,7 +34,7 @@ async function lookUpYandexTranslate(info) {
     const left = screen.width / 2 - w / 2;
     const top = screen.height / 2 - h / 2;
 
-    browser.windows.create({
+    chrome.windows.create({
       url: url,
       type: "popup",
       width: w,
@@ -48,3 +44,14 @@ async function lookUpYandexTranslate(info) {
     });
   }
 }
+
+function init() {
+  chrome.contextMenus.create({
+    id: contextMenuId,
+    title: "Yandex Translate: %s",
+    contexts: ["selection"],
+  });
+}
+
+chrome.runtime.onInstalled.addListener(init);
+chrome.contextMenus.onClicked.addListener(lookUpYandexTranslate);

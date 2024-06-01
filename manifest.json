@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "__MSG_extensionName__",
   "version": "1.2",
   "description": "__MSG_extensionDescription__",
@@ -10,7 +10,8 @@
     "192": "assets/icons/icon-192.png"
   },
   "background": {
-    "scripts": ["src/context_menu.js"]
+    "scripts": ["src/context_menu.js"],
+    "type": "module"
   },
   "permissions": ["contextMenus", "storage"],
   "options_ui": {
