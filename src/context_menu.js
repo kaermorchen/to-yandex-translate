@@ -31,16 +31,12 @@ async function lookUpYandexTranslate(info) {
   } else {
     const w = settings.window_width;
     const h = settings.window_height;
-    const left = screen.width / 2 - w / 2;
-    const top = screen.height / 2 - h / 2;
 
     chrome.windows.create({
       url: url,
       type: "popup",
       width: w,
       height: h,
-      left: left,
-      top: top,
     });
   }
 }
