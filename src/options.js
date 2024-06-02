@@ -1,7 +1,7 @@
 function saveOptions(e) {
   e.preventDefault();
 
-  browser.storage.sync.set({
+  chrome.storage.sync.set({
     window_width: parseInt(document.querySelector("#window_width").value),
     window_height: parseInt(document.querySelector("#window_height").value),
     target: document.querySelector("[name='target']:checked").id,
@@ -15,7 +15,7 @@ function restoreOptions() {
     document.querySelector(`#${result.target}`).checked = true;
   }
 
-  let getting = browser.storage.sync.get({
+  let getting = chrome.storage.sync.get({
     window_height: 650,
     window_width: 900,
     target: "window",

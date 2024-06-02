@@ -5,23 +5,20 @@
   "description": "__MSG_extensionDescription__",
   "default_locale": "en",
   "icons": {
+    "16": "assets/icons/icon-16.png",
     "48": "assets/icons/icon-48.png",
     "96": "assets/icons/icon-96.png",
     "192": "assets/icons/icon-192.png"
   },
   "background": {
     "scripts": ["src/context_menu.js"],
+    "service_worker": "src/context_menu.js",
     "type": "module"
   },
   "permissions": ["contextMenus", "storage"],
   "options_ui": {
     "page": "src/options.html"
   },
-  "developer": {
-    "name": "Stanislav Romanov",
-    "url": "https://github.com/kaermorchen"
-  },
-  "homepage_url": "https://github.com/kaermorchen/to-yandex-translate",
   "browser_specific_settings": {
     "gecko": {
       "id": "{b5ae67f2-5eb5-4610-980b-f09cf4e54c1f}"
