@@ -5,8 +5,6 @@
   "use strict";
 
   try {
-    console.log("[Yandex Translate] Content script starting...");
-
     // Configuration
     const ICON_SIZE = 32;
     const ICON_MARGIN = 5;
@@ -56,10 +54,6 @@
         console.error("Failed to load icon from", ICON_PATH, e);
       });
 
-      icon.addEventListener("load", () => {
-        console.log("Icon loaded successfully from", ICON_PATH);
-      });
-
       return icon;
     }
 
@@ -93,13 +87,11 @@
     function scheduleShowIcon() {
       // Skip if icon is suppressed (e.g., after click)
       if (suppressIcon) {
-        console.log("Icon suppressed, skipping show");
         return;
       }
 
       // Skip if icon is disabled in settings
       if (!settings.show_icon) {
-        console.log("Icon disabled in settings, skipping show");
         return;
       }
 
@@ -119,7 +111,6 @@
         currentSelection = selectedText;
 
         const selRect = getSelectionRect();
-        console.log(selRect.right, selRect.top, mouseX, mouseY);
         if (selRect) {
           showIcon(selRect.right, selRect.top);
         } else {
@@ -132,13 +123,10 @@
 
     // Show icon at position
     function showIcon(x, y) {
-      console.log("showIcon called with", x, y);
       hideIcon();
 
       currentIcon = createIcon();
-      console.log("icon created", currentIcon);
       document.body.appendChild(currentIcon);
-      console.log("icon appended to body");
 
       // Position icon near mouse or selection
       const scrollX = window.scrollX;
@@ -162,15 +150,6 @@
       const posX = viewportX + scrollX;
       const posY = viewportY + scrollY;
 
-      console.log(
-        "positioning icon at",
-        posX,
-        posY,
-        "(viewport:",
-        viewportX,
-        viewportY,
-        ")",
-      );
       currentIcon.style.left = `${posX}px`;
       currentIcon.style.top = `${posY}px`;
     }
@@ -197,7 +176,6 @@
         },
         (result) => {
           settings.show_icon = result.show_icon;
-          console.log("Settings loaded:", settings);
         },
       );
     }
@@ -218,24 +196,18 @@
 
     // Handle mouse up (selection end)
     function handleMouseUp(event) {
-      console.log("mouseup event", event.clientX, event.clientY);
       // Small delay to allow selection to update
       setTimeout(() => {
         const selectedText = getSelectedText();
-        console.log("selectedText:", selectedText);
 
         if (selectedText && selectedText.length > 0) {
           // Skip if icon is suppressed (e.g., after click)
           if (suppressIcon) {
-            console.log("Icon suppressed, skipping show after mouseup");
             return;
           }
 
           // Skip if icon is disabled in settings
           if (!settings.show_icon) {
-            console.log(
-              "Icon disabled in settings, skipping show after mouseup",
-            );
             return;
           }
 
@@ -246,16 +218,13 @@
           if (selRect) {
             mouseX = selRect.right;
             mouseY = selRect.top;
-            console.log("using selection rect", selRect);
           } else {
             mouseX = event.clientX;
             mouseY = event.clientY;
           }
 
-          console.log("showing icon at", mouseX, mouseY);
           scheduleShowIcon();
         } else {
-          console.log("no selection, hiding icon");
           hideIcon();
         }
       }, 10);
@@ -285,7 +254,6 @@
         if (areaName === "sync") {
           if (changes.show_icon) {
             settings.show_icon = changes.show_icon.newValue;
-            console.log("Settings updated:", settings);
           }
         }
       });
@@ -301,14 +269,10 @@
         if (selectedText && selectedText.length > 0) {
           // Skip if icon is suppressed (e.g., after click)
           if (suppressIcon) {
-            console.log("Icon suppressed, skipping show after selectionchange");
             return;
           }
           // Skip if icon is disabled in settings
           if (!settings.show_icon) {
-            console.log(
-              "Icon disabled in settings, skipping show after selectionchange",
-            );
             return;
           }
           currentSelection = selectedText;
@@ -316,17 +280,11 @@
           if (selRect) {
             mouseX = selRect.right;
             mouseY = selRect.top;
-            console.log("selectionchange: showing icon at", mouseX, mouseY);
             scheduleShowIcon();
           }
         } else {
           hideIcon();
         }
-      });
-
-      console.log("Yandex Translate content script loaded", {
-        iconPath: ICON_PATH,
-        version: "1.0",
       });
     }
 
