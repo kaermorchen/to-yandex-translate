@@ -22,3 +22,8 @@ fieldset .form-input:last-child {
   display: inline-block;
   width: 90px;
 }
+
+.form-input input[type="checkbox"] + label {
+  width: auto;
+  margin-left: 0.5rem;
+}

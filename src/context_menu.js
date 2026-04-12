@@ -5,8 +5,15 @@ const domainLocales = new Map([
   ["ru", "ru"],
 ]);
 
-async function lookUpYandexTranslate(info) {
-  if (!info || info.menuItemId !== contextMenuId) {
+/**
+ * Open translation for the given text
+ * @param {string} text - Text to translate
+ * @param {Object} [options] - Optional parameters
+ * @param {number} [options.x] - X coordinate (for positioning)
+ * @param {number} [options.y] - Y coordinate (for positioning)
+ */
+async function openTranslation(text, options = {}) {
+  if (!text || typeof text !== "string") {
     return;
   }
 
@@ -16,7 +23,7 @@ async function lookUpYandexTranslate(info) {
     gettingAcceptLanguages.find((item) => domainLocales.has(item)) || "en";
 
   const domainLocale = domainLocales.get(supportedLanguage);
-  const url = `https://translate.yandex.${domainLocale}/?text=${info.selectionText}`;
+  const url = `https://translate.yandex.${domainLocale}/?text=${encodeURIComponent(text)}`;
 
   const settings = await chrome.storage.sync.get({
     window_height: 650,
@@ -29,16 +36,27 @@ async function lookUpYandexTranslate(info) {
       url: url,
     });
   } else {
-    const w = settings.window_width;
-    const h = settings.window_height;
+    // Ensure integer dimensions
+    const w = Math.round(settings.window_width);
+    const h = Math.round(settings.window_height);
 
-    chrome.windows.create({
+    const createData = {
       url: url,
       type: "popup",
       width: w,
       height: h,
-    });
+    };
+
+    chrome.windows.create(createData);
   }
+}
+
+async function lookUpYandexTranslate(info) {
+  if (!info || info.menuItemId !== contextMenuId) {
+    return;
+  }
+
+  await openTranslation(info.selectionText);
 }
 
 function init() {
@@ -48,6 +66,15 @@ function init() {
     contexts: ["selection"],
   });
 }
+
+// Handle messages from content script
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === "translateSelection") {
+    openTranslation(message.text, { x: message.x, y: message.y });
+    sendResponse({ success: true });
+  }
+  return true; // Keep message channel open for async response
+});
 
 chrome.runtime.onInstalled.addListener(init);
 chrome.contextMenus.onClicked.addListener(lookUpYandexTranslate);

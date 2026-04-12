@@ -29,5 +29,13 @@
 
   "save": {
     "message": "Save"
+  },
+
+  "iconTitle": {
+    "message": "Translate selected text"
+  },
+
+  "showIconLabel": {
+    "message": "Show translation icon when text is selected"
   }
 }
